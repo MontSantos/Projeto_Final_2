@@ -1,0 +1,62 @@
+LTspice 24.1.5 for Windows
+Circuit: C:\Users\guilh\OneDrive\Documents\GitHub\Projeto-Final-2\LTspice_Sims\analise_Freq.net
+Start Time: Sat Jul  5 12:22:48 2025
+C:\Users\guilh\OneDrive\Documents\GitHub\Projeto-Final-2\LTspice_Sims\analise_Freq.net(9): Sub-circuit name listed twice. This is most likely because the corresponding symbol contains the name in more than one attribute.
+X§U1 N004 N002 N001 0 N002 lmv358a lmv358a
+                                  ^^^^^^^^
+solver = Normal
+Maximum thread count: 16
+tnom = 27
+temp = 27
+method = trap
+Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
+Starting Gmin stepping
+Gmin = 10
+Gmin = 1.07374
+Gmin = 0.115292
+Gmin = 0.0123794
+Gmin = 0.00132923
+vernier = 0.5
+Gmin = 0.000247786
+vernier = 0.25
+vernier = 0.125
+vernier = 0.0625
+vernier = 0.03125
+Gmin = 0.00026409
+vernier = 0.0416667
+Gmin = 0.000240564
+vernier = 0.0555555
+vernier = 0.074074
+Gmin = 0.000205784
+vernier = 0.0987653
+vernier = 0.131687
+Gmin = 0.000160613
+vernier = 0.175583
+Gmin = 0.000109036
+vernier = 0.23411
+vernier = 0.312147
+Gmin = 5.73881e-05
+vernier = 0.416196
+vernier = 0.554928
+Gmin = 2.10272e-05
+vernier = 0.739903
+Gmin = 4.51688e-06
+vernier = 0.986537
+vernier = 1
+Gmin = 4.92906e-07
+Gmin = 5.29254e-08
+Gmin = 5.68282e-09
+Gmin = 6.10188e-10
+Gmin = 6.55185e-11
+Gmin = 7.03499e-12
+Gmin = 7.55377e-13
+Gmin = 0
+Gmin = 0
+Gmin stepping succeeded in finding the operating point.
+
+Total elapsed time: 0.777 seconds.
+
+Files loaded:
+C:\Users\guilh\OneDrive\Documents\GitHub\Projeto-Final-2\LTspice_Sims\analise_Freq.net
+C:\Users\guilh\OneDrive\Documents\LTspice\lmv358a.lib
+
