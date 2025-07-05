@@ -9,7 +9,7 @@ Repositório de Projeto Final de Graduação em Engenharia de Computação.
 
 Este repositório disponibiliza todos os materiais utilizados e desenvolvidos ao longo do projeto, incluindo:
 
-- Esquemáticos e layouts das PCBs desenvolvidas
+- Esquemáticos e layouts das PCBs desenvolvidas para suporte de periféricos
 - Data sheets dos principais componentes utilizados
 - Implementações de protocolos de comunicação de vídeo (VGA) e teclado (PS/2)
 - Códigos de teste para validação de módulos
