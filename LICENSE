@@ -18,7 +18,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-The character bitmaps of numbers 0 to 9 present in /PONG/ROM.VHD and /BREAKOUT/ROM.VHD
+The character bitmaps of numbers 0 to 9 present in HDL_Projetos/PONG/ROM.VHD and HDL_Projetos/BREAKOUT/ROM.VHD
 are licensed under:
 
 The MIT License (MIT)
