@@ -1,0 +1,113 @@
+
+(kicad_symbol_lib (version 20211014) (generator kicad_symbol_editor)
+  (symbol "PJ-102A" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (property "Reference" "J" (id 0) (at -7.63327 3.05331 0)
+      (effects (font (size 1.27 1.27)) (justify bottom left))
+    )
+    (property "Value" "PJ-102A" (id 1) (at -7.63628 -10.1817 0)
+      (effects (font (size 1.27 1.27)) (justify bottom left))
+    )
+    (property "Footprint" "PJ-102A:CUI_PJ-102A" (id 2) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MF" "CUI" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "DESCRIPTION" "2.0 mm Center Pin%2C 2.5 A%2C Right Angle%2C Through Hole%2C Tapered Pins%2C Dc Power Jack Connector" (id 5) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "PACKAGE" "None" (id 6) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "PRICE" "0.44 USD" (id 7) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MP" "PJ-102A" (id 8) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "AVAILABILITY" "Good" (id 9) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MANUFACTURER" "CUI inc" (id 10) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (symbol "PJ-102A_0_0"
+      (arc (start -5.842 0.635) (mid -6.477 -0.0) (end -5.842 -0.635)
+        (stroke (width 0.254) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts (xy -5.842 0.635) (xy 0.508 0.635)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -5.842 -0.635) (xy 0.508 -0.635)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 0.508 1.27) (xy 0.508 -1.27)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 0.508 -1.27) (xy 1.143 -1.27)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 1.143 -1.27) (xy 1.143 0.0)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 1.143 0.0) (xy 1.143 1.27)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 1.143 1.27) (xy 0.508 1.27)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 2.413 -2.54) (xy -3.302 -2.54)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -3.302 -2.54) (xy -3.302 -4.445)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -3.048 -4.445) (xy -3.556 -4.445)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -3.556 -4.445) (xy -3.302 -4.699)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -3.302 -4.699) (xy -3.048 -4.445)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 2.54 -5.08) (xy -4.572 -5.08)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -4.572 -5.08) (xy -5.207 -4.445)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy -5.207 -4.445) (xy -5.842 -5.08)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 1.143 0.0) (xy 2.413 0.0)) (stroke (width 0.254))
+      )
+      (pin power_in line (at 5.08 0.0 180.0) (length 2.54)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "1"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 5.08 -2.54 180.0) (length 2.54)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "3"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 5.08 -5.08 180.0) (length 2.54)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "2"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+    )
+  )
+)

@@ -1,0 +1,8 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "ANT13SEC1E")(type "KiCad")(uri "${KIPRJMOD}/Simbolos/ANT13SEC1E.kicad_sym")(options "")(descr ""))
+  (lib (name "L77HDE15SD1CH4FVGA")(type "KiCad")(uri "${KIPRJMOD}/Simbolos/L77HDE15SD1CH4FVGA.kicad_sym")(options "")(descr ""))
+  (lib (name "MD-60SM")(type "KiCad")(uri "${KIPRJMOD}/Simbolos/MD-60SM.kicad_sym")(options "")(descr ""))
+  (lib (name "PJ-102A")(type "KiCad")(uri "${KIPRJMOD}/Simbolos/PJ-102A.kicad_sym")(options "")(descr ""))
+  (lib (name "SJ1-3525NG")(type "KiCad")(uri "${KIPRJMOD}/Simbolos/SJ1-3525NG.kicad_sym")(options "")(descr ""))
+)
