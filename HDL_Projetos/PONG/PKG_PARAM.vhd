@@ -1,0 +1,22 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+
+PACKAGE PKG_PARAM IS
+	CONSTANT h_pixels : NATURAL := 1024;
+	CONSTANT v_pixels : NATURAL := 768; 
+	CONSTANT border : NATURAL := 8; -- h_pixels/128;
+	
+	CONSTANT paddle_width : NATURAL := 10;
+	CONSTANT paddle_height : NATURAL := 50;
+	CONSTANT p1x : NATURAL := 86;
+	CONSTANT p2x : NATURAL := 926;
+	
+	CONSTANT b_size : NATURAL := 8;
+	CONSTANT multiplier_Y : INTEGER := 2;
+	
+	CONSTANT score1x : NATURAL := 200;
+	CONSTANT score2x : NATURAL := 820;
+	CONSTANT scorey : NATURAL := 30;
+	CONSTANT score_width: NATURAL := 8;
+	CONSTANT score_height: NATURAL := 16;
+END PACKAGE PKG_PARAM;

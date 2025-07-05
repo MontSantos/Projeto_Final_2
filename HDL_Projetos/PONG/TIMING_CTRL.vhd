@@ -1,0 +1,76 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+USE IEEE.MATH_REAL.ALL;
+
+ENTITY TIMING_CTRL IS
+	PORT (
+		pixel_clock : IN STD_LOGIC; 
+		h_sync : OUT STD_LOGIC; 
+		v_sync : OUT STD_LOGIC; 
+		image_on : OUT STD_LOGIC; 
+		pixel_x : OUT NATURAL; 
+		pixel_y : OUT NATURAL 
+	);
+END TIMING_CTRL;
+	
+ARCHITECTURE Behavioral OF TIMING_CTRL IS
+
+	CONSTANT	h_area : NATURAL := 1024; -- valores obtidos em http://tinyvga.com/vga-timing
+	CONSTANT	h_front : NATURAL := 24; 
+	CONSTANT	h_pulse : NATURAL := 136; 
+	CONSTANT	h_back : NATURAL := 160;  
+	
+	CONSTANT	v_area : NATURAL := 768; 
+	CONSTANT	v_front : NATURAL := 3; 
+	CONSTANT	v_pulse : NATURAL := 6; 
+	CONSTANT	v_back : NATURAL := 29; 
+
+	CONSTANT v_blanking : NATURAL := V_pulse + v_back + v_front;
+	CONSTANT h_blanking : NATURAL := h_pulse + h_back + h_front; 
+	
+	CONSTANT v_period : NATURAL := v_blanking + v_area; --806
+	CONSTANT h_period : NATURAL := h_blanking + h_area; --1344 
+	
+	SIGNAL h_val : NATURAL RANGE 0 TO h_period - 1 := 0;
+	SIGNAL v_val : NATURAL RANGE 0 TO v_period - 1 := 0;
+	
+	SIGNAL h_sync_reg, v_sync_reg, image_on_reg : STD_LOGIC := '0';
+	SIGNAL pixel_x_reg, pixel_y_reg : NATURAL :=  0;
+	
+BEGIN
+	PROCESS(pixel_clock)
+	BEGIN
+		IF rising_edge(pixel_clock) THEN
+			IF (h_val < h_period - 1) THEN
+				h_val <= h_val + 1;
+			ELSE
+				h_val <= 0;
+				IF (v_val < v_period - 1) THEN
+					v_val <= v_val + 1;
+				ELSE 
+					v_val <= 0;
+				END IF;
+			END IF;
+			
+			IF (h_val < h_area) THEN
+				pixel_x_reg <= h_val;
+			END IF;
+			
+			IF (v_val < v_area) THEN
+				pixel_Y_reg <= v_val;
+			END IF;
+		END IF;
+	END PROCESS;
+	
+	h_sync_reg <= '0' WHEN (h_val >= h_area + h_front) AND  (h_val < h_area + h_front + h_pulse) ELSE '1';
+	v_sync_reg <= '0' WHEN (v_val >= v_area + v_front) AND  (v_val < v_area + v_front + v_pulse) ELSE '1';
+	image_on_reg <= '1' WHEN ((h_val <=  h_area + 1) AND (v_val <= v_area + 1)) ELSE '0';
+	
+	h_sync <= h_sync_reg;
+	v_sync <= v_sync_reg;
+	image_on <= image_on_reg;
+	pixel_x <= pixel_x_reg;
+	pixel_y <= pixel_y_reg;
+	
+END Behavioral;

@@ -1,0 +1,66 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+USE IEEE.MATH_REAL.ALL;
+
+ENTITY PADDLE_CTRL IS
+	GENERIC (
+		h_pixels : NATURAL := 1024; --horizontal display width in pixels
+		v_pixels : NATURAL := 768 --vertical display width in rows
+	);
+	PORT (
+		pixel_clock : IN STD_LOGIC; --pixel clock
+		v_sync : IN STD_LOGIC;
+		go_signal : IN STD_LOGIC;
+		teclado : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		p1y : OUT NATURAL;
+		p2y : OUT NATURAL
+	);
+END PADDLE_CTRL;
+ARCHITECTURE Behavioral OF PADDLE_CTRL IS
+
+	CONSTANT border : NATURAL :=  8; --h_pixels/128;
+	CONSTANT paddle_height : NATURAL := 50;
+	CONSTANT multiplier : NATURAL := 8; 
+
+	SIGNAL p1y_reg : NATURAL := (v_pixels / 2) - (paddle_height / 2);
+	SIGNAL p2y_reg : NATURAL := (v_pixels / 2) - (paddle_height / 2);
+
+BEGIN
+	PROCESS (pixel_clock)
+		BEGIN
+			IF rising_edge(pixel_clock) THEN
+				IF go_signal = '1' THEN
+					IF (teclado = X"29") THEN
+						p1y_reg <= (v_pixels / 2) - (paddle_height / 2);
+						p2y_reg <= (v_pixels / 2) - (paddle_height / 2);
+					END IF;
+					
+					CASE teclado IS
+						WHEN "00011101" => ~-- TECLA_W = '1'
+							IF p1y_reg > border THEN
+								p1y_reg <= p1y_reg - (1 * multiplier);
+							END IF;
+						WHEN "00011011" => 
+							IF p1y_reg < (95 * border - paddle_height) THEN
+								p1y_reg <= p1y_reg + (1 * multiplier);
+							END IF;
+						WHEN "01000011" =>
+							IF p2y_reg > border THEN
+								p2y_reg <= p2y_reg - (1 * multiplier);
+							END IF;
+						WHEN "01000010" =>
+							IF p2y_reg < (95 * border - paddle_height) THEN
+								p2y_reg <= p2y_reg + (1 * multiplier);
+							END IF;
+						WHEN OTHERS => 
+							NULL;
+					END CASE;
+				END IF;
+			END IF;
+		END PROCESS;
+
+		p1y <= p1y_reg;
+		p2y <= p2y_reg;
+
+END Behavioral;

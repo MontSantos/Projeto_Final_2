@@ -1,0 +1,124 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+use IEEE.MATH_REAL.ALL;
+USE work.PKG_PARAM.ALL;
+
+ENTITY IMAGE_CTRL IS
+	PORT (
+		pixel_clock : IN STD_LOGIC; --pixel clock
+		image_on : IN STD_LOGIC; --display enable 
+		pixel_x : IN NATURAL; --coordenada horizontal
+		pixel_y : IN NATURAL; --coordenada vertical
+		p1Y : IN NATURAL;
+		p2y : IN NATURAL;
+		bx : IN INTEGER;
+		by : IN INTEGER;
+		score1 : IN NATURAL;
+		score2 : IN NATURAL;
+		red : OUT STD_LOGIC_VECTOR(2 DOWNTO 0); -- 3 bits
+      green : OUT STD_LOGIC_VECTOR(2 DOWNTO 0); -- 3 bits
+      blue : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) -- 2 bits
+
+	);
+END IMAGE_CTRL;
+ARCHITECTURE Behavioral OF IMAGE_CTRL IS
+	
+	signal rom_addr1  : STD_LOGIC_VECTOR(10 downto 0);
+	signal rom_data1  : STD_LOGIC_VECTOR(7 downto 0);
+	
+	signal rom_addr2  : STD_LOGIC_VECTOR(10 downto 0);
+	signal rom_data2  : STD_LOGIC_VECTOR(7 downto 0);
+	
+	SIGNAL red_reg : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
+	SIGNAL green_reg : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
+	SIGNAL blue_reg : STD_LOGIC_VECTOR(1 DOWNTO 0) := "00";
+
+BEGIN
+
+	u_ROM1 : ENTITY work.ROM(behavioral)
+	PORT MAP (
+			pixel_clock => pixel_clock,
+			addr => rom_addr1,
+			data => rom_data1
+	);
+	u_ROM2 : ENTITY work.ROM(behavioral)
+	PORT MAP (
+			pixel_clock => pixel_clock,
+			addr => rom_addr2,
+			data => rom_data2
+	);
+
+	PROCESS (pixel_clock)
+	BEGIN
+	
+		IF rising_edge(pixel_clock) THEN
+			IF ((pixel_x < border OR pixel_x >= h_pixels - border) OR (pixel_y < border OR pixel_y >= v_pixels - border)) THEN
+				red_reg <= "011"; -- grey
+				green_reg <= "011";
+				blue_reg <= "01";
+			ELSIF (((p1y + paddle_height ) > pixel_y  AND pixel_y >= p1y) AND ((p1x + paddle_width) > pixel_x AND pixel_x >= p1x)) THEN
+				red_reg <= "111"; -- White
+				green_reg <= "111";
+				blue_reg <= "11";
+			ELSIF (((p2y + paddle_height ) > pixel_y AND pixel_y >= p2Y) AND ((p2x + paddle_width) > pixel_x AND pixel_x >= p2x)) THEN
+				red_reg <= "111"; -- White
+				green_reg <= "111";
+				blue_reg <= "11";
+			ELSIF ((pixel_x >= h_pixels / 2 - 2  AND pixel_x < h_pixels / 2 + 2) AND
+				   ( pixel_y >= border AND pixel_y < v_pixels - border)) THEN
+				IF ((pixel_y - border) MOD 16 < 8) THEN
+				  red_reg <= "111";
+				  green_reg <= "111";
+				  blue_reg <= "11";
+				END IF;
+			ELSIF ((pixel_x < (b_size + bx) AND pixel_x >= bx) AND (pixel_y < (b_size + by) AND pixel_y >= by)) THEN
+				red_reg <= "000";
+				green_reg <= "111";
+				blue_reg <= "11";
+				
+			ELSIF (((pixel_x >= score1x) AND (pixel_x < (score1x + score_width))) AND
+					 ((pixel_y >= scorey) AND ((pixel_y < (scorey + score_height))))) THEN
+					 
+					 rom_addr1 <= STD_LOGIC_VECTOR(to_unsigned(score1 * 16 + (pixel_y - scorey), 11));
+					 
+
+						IF rom_data1(7 - (pixel_x - score1x)) = '1' THEN
+							 red_reg <= "111";
+							 green_reg <= "111";
+							 blue_reg <= "11";
+						ELSE
+							 red_reg <= "000";
+							 green_reg <= "000";
+							 blue_reg <= "00";
+						END IF;
+						
+			ELSIF (((pixel_x >= score2x) AND (pixel_x < (score2x + score_width))) AND
+					 ((pixel_y >= scorey) AND ((pixel_y < (scorey + score_height))))) THEN
+					 
+					 rom_addr2 <= STD_LOGIC_VECTOR(to_unsigned(score2 * 16 + (pixel_y - scorey), 11));
+					 
+
+						IF rom_data2(7 - (pixel_x - score2x)) = '1' THEN
+							 red_reg <= "111";
+							 green_reg <= "111";
+							 blue_reg <= "11";
+						ELSE
+							 red_reg <= "000";
+							 green_reg <= "000";
+							 blue_reg <= "00";
+						END IF;
+					 
+			ELSE
+				red_reg <= "000"; -- black
+				green_reg <= "000";
+				blue_reg <= "00";
+			END IF;
+		END IF;
+	END PROCESS;
+
+	red <= red_reg WHEN image_on = '1' ELSE "000";
+	green <= green_reg WHEN image_on = '1' ELSE "000";
+	blue <= blue_reg WHEN image_on = '1' ELSE "00";
+	
+end Behavioral;

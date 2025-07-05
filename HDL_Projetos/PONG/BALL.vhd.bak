@@ -1,0 +1,128 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+USE IEEE.MATH_REAL.ALL;
+
+ENTITY BALL IS
+	GENERIC (
+		h_pixels : NATURAL := 1024; --horizontal display width in pixels
+		v_pixels : NATURAL := 768 --vertical display width in rows
+	);
+	PORT (
+		pixel_clock : IN STD_LOGIC; --pixel clock
+		go_signal : IN STD_LOGIC;
+		p1y : IN NATURAL;
+		p2y : IN NATURAL;
+		teclado : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		bx : OUT INTEGER;
+		by : OUT INTEGER;
+		score1 : OUT NATURAL;
+		score2 : OUT NATURAL
+	);
+END BALL;
+ARCHITECTURE Behavioral OF BALL IS
+
+	CONSTANT border : NATURAL := 8; -- h_pixels/128;
+	CONSTANT multiplier_Y : INTEGER := 2;
+	CONSTANT b_size : NATURAL := 8;
+	CONSTANT paddle_width : NATURAL := 10;
+	CONSTANT paddle_height : NATURAL := 50;
+	CONSTANT p1x : NATURAL := 86;
+	CONSTANT p2x : NATURAL := 926;
+
+	SIGNAL bx_reg : NATURAL := 512; --h_pixels / 2;
+	SIGNAL bx_prev : NATURAL := 0;
+	SIGNAL by_reg : NATURAL := 384; --(v_pixels / 2);
+	SIGNAL score1_reg : NATURAL RANGE 0 TO 9 := 0;
+	SIGNAL score2_reg : NATURAL RANGE 0 TO 9 := 0;
+	
+	SIGNAL ini : STD_LOGIC := '1';
+ 
+	SIGNAL multiplier : INTEGER RANGE 2 TO 32 := 2;
+	SIGNAL dir : INTEGER := - 1;
+	SIGNAL dir_y : INTEGER := 1;
+	SIGNAL hit_reg : BOOLEAN := FALSE;
+	
+
+BEGIN
+	PROCESS (pixel_clock)
+	BEGIN
+		IF rising_edge(pixel_clock) THEN
+			IF go_signal = '1' THEN
+				IF (score1_reg = 9 OR score2_reg = 9) THEN
+						ini <= '1';
+				END IF;
+						
+				IF(teclado = X"29") THEN 
+						bx_reg <= 512;
+						by_reg <= 384;
+						score1_reg <= 0;
+						score2_reg <= 0;
+						ini <= '0';
+						
+				ELSIF (ini = '0') THEN
+						IF (by_reg <= border) THEN
+							dir_y <= 1;
+						ELSIF ((by_reg + b_size) >= v_pixels - border) THEN
+							dir_y <= - 1;
+						END IF;
+	 
+						bx_prev <= bx_reg;
+						bx_reg <= bx_reg + (multiplier * dir);
+						by_reg <= by_reg + dir_y * multiplier_y;
+	 
+						-- Colisão com as bordas
+						IF (bx_reg >= h_pixels - border - b_size) OR (bx_reg <= border) THEN
+							bx_reg <= 512;
+							multiplier <= 2;
+							hit_reg <= FALSE;
+							IF (dir = 1) THEN -- INCREMENTA O PLACAR
+								score1_reg <= score1_reg + 1;
+							ELSE
+								score2_reg <= score2_reg + 1;
+	 
+							END IF;
+
+							-- Colisão com raquete da esquerda
+						ELSIF (
+							(bx_prev >= p1x + paddle_width) AND (bx_reg <= p1x + paddle_width) AND -- cruzou a borda da raquete
+								(by_reg + b_size >= p1y) AND (by_reg <= p1y + paddle_height)
+								) THEN
+								IF NOT hit_reg THEN
+									dir <= - dir;
+									bx_reg <= 86; -- Reposiciona fora da raquete
+									hit_reg <= TRUE;
+									IF multiplier <= 12 THEN
+										multiplier <= multiplier + 1;
+									END IF;
+							END IF;
+	 
+							-- Colisão com raquete da direita
+						ELSIF (
+							((bx_prev + b_size) <= p2x) AND ((bx_reg + b_size) >= p2x) AND
+								(by_reg + b_size >= p2y) AND (by_reg <= p2y + paddle_height)
+								) THEN
+								IF NOT hit_reg THEN
+									dir <= - dir;
+									bx_reg <= 926; -- Reposiciona fora da raquete
+									hit_reg <= TRUE;
+									IF multiplier <= 12 THEN
+										multiplier <= multiplier + 1;
+									END IF;
+							END IF;
+
+							-- Nenhuma colisão: libera novo hit
+						ELSE
+							hit_reg <= FALSE;
+						END IF;
+					END IF;
+			END IF;
+		END IF;
+	END PROCESS;
+
+	bx <= bx_reg;
+	by <= by_reg;
+	score1 <= score1_reg;
+	score2 <= score2_reg;
+
+END Behavioral;

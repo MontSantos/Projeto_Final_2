@@ -1,0 +1,18 @@
+Analysis & Synthesis Status : Successful - Sat Jul  5 11:29:29 2025
+Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Revision Name : PONG
+Top-level Entity Name : MAIN
+Family : Cyclone IV GX
+Total logic elements : 2,466
+    Total combinational functions : 2,405
+    Dedicated logic registers : 324
+Total registers : 324
+Total pins : 15
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total GXB Receiver Channel PCS : 0
+Total GXB Receiver Channel PMA : 0
+Total GXB Transmitter Channel PCS : 0
+Total GXB Transmitter Channel PMA : 0
+Total PLLs : 1

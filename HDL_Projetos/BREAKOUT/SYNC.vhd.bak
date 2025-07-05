@@ -1,0 +1,23 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+
+ENTITY sync IS
+	PORT(pixel_clk: IN STD_LOGIC;
+	     ps2_CLK: IN STD_LOGIC;
+	     ps2_CLK_SYNC: OUT STD_LOGIC
+	);
+END ENTITY;
+
+ARCHITECTURE behavioral OF sync IS
+	SIGNAL sync: STD_LOGIC_VECTOR(1 DOWNTO 0) := "00";	
+	BEGIN
+		PROCESS(pixel_clk) IS
+			BEGIN
+				IF RISING_EDGE(pixel_clk) THEN
+					sync <= sync(0) & ps2_CLK;
+				END IF;
+		END PROCESS;
+		ps2_CLK_SYNC <= sync(1);
+END ARCHITECTURE;
+

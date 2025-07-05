@@ -1,0 +1,119 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+USE IEEE.MATH_REAL.ALL;
+
+ENTITY BLOCKS IS
+	PORT (
+		pixel_clock : IN STD_LOGIC; --pixel clock
+		go_signal : IN STD_LOGIC;
+		bx : IN INTEGER;
+		by : IN INTEGER;
+		score1 : OUT NATURAL;
+		life : OUT NATURAL
+	);
+END BLOCKS;
+ARCHITECTURE Behavioral OF BLOCKS IS
+
+	CONSTANT h_pixels : NATURAL := 1024; 
+	CONSTANT v_pixels : NATURAL := 768; 
+
+	CONSTANT border : NATURAL := 8; -- h_pixels/128;
+	CONSTANT multiplier_Y : INTEGER := 2;
+	CONSTANT b_size : NATURAL := 8;
+	CONSTANT paddle_width : NATURAL := 150;
+	CONSTANT paddle_height : NATURAL := 10;
+	CONSTANT p1y : NATURAL := 700;
+
+	SIGNAL bx_reg : NATURAL := 512 - b_size; --h_pixels / 2;
+	SIGNAL by_reg : NATURAL := 384 - b_size; --(v_pixels / 2);
+	SIGNAL score1_reg : NATURAL RANGE 0 TO 9 := 0;
+	
+	SIGNAL ini : STD_LOGIC := '1';
+ 
+	SIGNAL multiplier : INTEGER RANGE 2 TO 6 := 2;
+	SIGNAL dir : INTEGER := - 1;
+	SIGNAL dir_y : INTEGER := 1;
+	SIGNAL hit_reg : BOOLEAN := FALSE;
+	
+	SIGNAL life_reg : NATURAL RANGE 0 TO 3 := 3;
+
+BEGIN
+	PROCESS (pixel_clock)
+	BEGIN
+		IF rising_edge(pixel_clock) THEN
+			IF go_signal = '1' THEN
+				IF (score1_reg = 9) THEN
+						ini <= '1';
+				END IF;
+						
+				IF(teclado = X"29") THEN 
+						bx_reg <= 512 - b_size;
+						by_reg <= 384 - b_size;
+						score1_reg <= 0;
+						ini <= '0';
+						life_reg <= 3;
+						multiplier <= 2;
+						dir <= - 1;
+						dir_y <= 1;
+						
+				ELSIF (ini = '0') THEN
+						bx_reg <= bx_reg + (multiplier * dir);
+						by_reg <= by_reg + dir_y * multiplier_y;
+						
+						IF (bx_reg > h_pixels - border - b_size) THEN
+							bx_reg <= h_pixels - border - b_size;
+							dir <= - 1;
+						ELSIF (bx_reg < border) THEN
+							bx_reg <= border + (multiplier * (- dir));
+							dir <= + 1;
+						ELSIF (by_reg < border) THEN
+							by_reg <= border;
+							dir_y <= 1;
+						END IF;
+						
+						IF (by_reg >= v_pixels - border - b_size) THEN
+							life_reg <= life_reg - 1;
+							
+							IF (life_reg > 1) THEN
+								bx_reg <= 512 - b_size;
+								by_reg <= 384 - b_size;
+								multiplier <= 2;
+							ELSE 
+								ini <= '1';
+							END IF;
+
+							-- Colisão com raquete
+						ELSIF (
+							(by_reg + b_size >= p1y) AND (by_reg <= p1y) AND -- cruzou a borda da raquete
+								(bx_reg >= p1x - b_size) AND (bx_reg <= p1x + paddle_width)
+								) THEN
+								IF NOT hit_reg THEN
+									IF (dir = -1) AND (bx_reg >= p1x +75) THEN
+										dir <= - dir;
+									ELSIF (dir = 1) AND (bx_reg <= p1x + 75) THEN
+										dir <= - dir;
+									END IF;
+									dir_y <= - dir_y;
+									by_reg <= p1y - b_size; -- Reposiciona fora da raquete
+									hit_reg <= TRUE;
+									IF multiplier <= 6 THEN
+										multiplier <= multiplier + 1;
+									END IF;
+							END IF;
+
+							-- Nenhuma colisão: libera novo hit
+						ELSE
+							hit_reg <= FALSE;
+						END IF;
+					END IF;
+			END IF;
+		END IF;
+	END PROCESS;
+
+	bx <= bx_reg;
+	by <= by_reg;
+	score1 <= score1_reg;
+	life <= life_reg;
+
+END Behavioral;
