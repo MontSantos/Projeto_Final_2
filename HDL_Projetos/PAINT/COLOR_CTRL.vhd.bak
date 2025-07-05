@@ -1,0 +1,78 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+USE IEEE.MATH_REAL.ALL;
+USE work.PKG_PARAM.ALL;
+
+ENTITY COLOR_CTRL IS
+	PORT (
+		pixel_clock : IN STD_LOGIC; --pixel clock
+		go_signal : IN STD_LOGIC;
+		teclado : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		col_addr : OUT NATURAL RANGE 0 TO n_blocks - 1;
+		lin_addr : OUT NATURAL RANGE 0 TO n_lin - 1;
+		color_data : OUT NATURAL RANGE 0 TO 9;
+		rw_en : OUT STD_LOGIC
+	);
+END COLOR_CTRL;
+ARCHITECTURE Behavioral OF COLOR_CTRL IS
+
+	SIGNAL col_reg : NATURAL RANGE 0 TO n_blocks - 1:= 0;
+	SIGNAL lin_reg : NATURAL RANGE 0 TO n_lin - 1:= 0;
+	SIGNAL rw_reg : STD_LOGIC := '0';
+	SIGNAL data_reg : NATURAL := 0;
+	
+	SIGNAL data_tmp : NATURAL := 0;
+
+BEGIN
+	PROCESS (pixel_clock)
+		BEGIN
+			IF rising_edge(pixel_clock) THEN
+				IF go_signal = '1' THEN
+					IF (teclado = X"29") THEN
+					END IF;
+					rw_reg <= '0';
+					
+					CASE teclado IS
+						WHEN x"1D" => 
+							IF lin_reg > 0 THEN
+								lin_reg <= lin_reg - 1; --W
+							END IF;
+						WHEN x"1B" => 
+							IF lin_reg < n_lin - 1 THEN
+								lin_reg <= lin_reg + 1; --S
+							END IF;
+						WHEN x"1C" => 
+							IF col_reg > 0 THEN
+								col_reg <= col_reg - 1; --A
+							END IF;
+						WHEN x"23" => 
+							IF col_reg < n_lin - 1 THEN
+								col_reg <= col_reg + 1; --D
+							END IF;
+						WHEN x"16" => data_tmp <= 1; --1
+						WHEN x"1E" => data_tmp <= 2; --2
+						WHEN x"26" => data_tmp <= 3; --3
+						WHEN x"25" => data_tmp <= 4; --4
+						WHEN x"2E" => data_tmp <= 5; --5
+						WHEN x"36" => data_tmp <= 6; --6
+						WHEN x"3D" => data_tmp <= 7; --7
+						WHEN x"3E" => data_tmp <= 8; --8
+						WHEN x"46" => data_tmp <= 9; --9
+						WHEN x"45" => data_tmp <= 0; --0
+						WHEN x"5A" => 
+							rw_reg <= '1';
+							data_reg <= data_tmp;
+						WHEN OTHERS => 
+							NULL;
+					END CASE;
+				END IF;
+			END IF;
+		END PROCESS;
+		
+		rw_en <= rw_reg;
+		col_addr <= col_reg;
+		lin_addr <= lin_reg;
+		color_data <= data_reg;
+
+END Behavioral;

@@ -1,0 +1,100 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+use IEEE.MATH_REAL.ALL;
+USE work.PKG_PARAM.ALL;
+
+ENTITY IMAGE_CTRL IS
+	PORT (
+		pixel_clock : IN STD_LOGIC; --pixel clock
+		image_on : IN STD_LOGIC; --display enable ('1' = display time, '0' = blanking time)
+		pixel_x : IN NATURAL RANGE 0 TO 1023;  --horizontal pixel coordinate
+		pixel_y : IN NATURAL RANGE 0 TO 767; --vertical pixel coordinate
+		col_addr : IN NATURAL RANGE 0 TO n_blocks - 1;
+		lin_addr : IN NATURAL RANGE 0 TO n_lin - 1;
+		out_data : IN NATURAL RANGE 0 TO 9;
+		red : OUT STD_LOGIC_VECTOR(2 DOWNTO 0); -- 3 bits
+      green : OUT STD_LOGIC_VECTOR(2 DOWNTO 0); -- 3 bits
+      blue : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) -- 2 bits
+
+	);
+END IMAGE_CTRL;
+ARCHITECTURE Behavioral OF IMAGE_CTRL IS	
+	
+	SIGNAL red_reg : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
+	SIGNAL green_reg : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
+	SIGNAL blue_reg : STD_LOGIC_VECTOR(1 DOWNTO 0) := "00";
+
+BEGIN
+	PROCESS (pixel_clock)
+	VARIABLE tmp_col : NATURAL RANGE 0 TO n_blocks - 1;
+	VARIABLE tmp_lin : NATURAL RANGE 0 TO n_lin - 1;
+	BEGIN
+		IF rising_edge(pixel_clock) THEN
+			tmp_col := col_addr;
+			tmp_lin := lin_addr;
+			
+			IF ((pixel_x < border OR pixel_x > 127 * border) OR (pixel_y < border OR pixel_y > 95 * border)) THEN
+				red_reg <= "100"; -- grey
+				green_reg <= "001";
+				blue_reg <= "10";
+				
+			ELSIF (pixel_x >= border + (tmp_col * block_width)) AND pixel_x < border + ((tmp_col + 1) * block_width) AND
+				(pixel_y >= border + (tmp_lin * block_height)) AND pixel_y < border + ((tmp_lin + 1) * block_height) THEN
+				CASE out_data IS
+					WHEN 0 =>
+						red_reg <= "000"; -- preto
+						green_reg <= "000";
+						blue_reg <= "00";
+					WHEN 1 =>
+						red_reg <= "111"; -- vermelho
+						green_reg <= "000";
+						blue_reg <= "00";
+					WHEN 2 =>
+						red_reg <= "000"; -- verde
+						green_reg <= "111";
+						blue_reg <= "00";
+					WHEN 3 =>
+						red_reg <= "000"; -- azul
+						green_reg <= "000";
+						blue_reg <= "11";
+					WHEN 4 =>
+						red_reg <= "111"; -- amarelo
+						green_reg <= "111";
+						blue_reg <= "00";
+					WHEN 5 =>
+						red_reg <= "111"; -- rosa
+						green_reg <= "000";
+						blue_reg <= "11";
+					WHEN 6 =>
+						red_reg <= "000"; -- azul-claro
+						green_reg <= "111";
+						blue_reg <= "11";
+					WHEN 7 =>
+						red_reg <= "110"; -- marrom
+						green_reg <= "010";
+						blue_reg <= "00";
+					WHEN 8 =>
+						red_reg <= "111"; -- rosa claro
+						green_reg <= "011";
+						blue_reg <= "11";
+					WHEN 9 =>
+						red_reg <= "111"; -- branco
+						green_reg <= "111";
+						blue_reg <= "11";
+					WHEN OTHERS =>
+						NULL;
+				END CASE;
+			ELSE
+				red_reg <= "000"; -- black
+				green_reg <= "000";
+				blue_reg <= "00";
+			END IF;
+		END IF;
+	END PROCESS;
+
+	red <= red_reg WHEN image_on = '1' ELSE "000";
+	green <= green_reg WHEN image_on = '1' ELSE "000";
+	blue <= blue_reg WHEN image_on = '1' ELSE "00";
+	
+end Behavioral;

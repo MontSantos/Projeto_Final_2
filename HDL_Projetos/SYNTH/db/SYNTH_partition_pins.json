@@ -1,0 +1,29 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "audio_out_L",
+					"strict" : false
+				},
+				{
+					"name" : "audio_out_R",
+					"strict" : false
+				},
+				{
+					"name" : "clock",
+					"strict" : false
+				},
+				{
+					"name" : "ps2_DATA",
+					"strict" : false
+				},
+				{
+					"name" : "ps2_CLK",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
