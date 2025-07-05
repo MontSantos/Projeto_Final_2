@@ -1,0 +1,89 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity Keyboard is
+	port (
+		clk	  : IN STD_LOGIC;
+		ps2_CLK : IN STD_LOGIC;
+		ps2_DATA: IN STD_LOGIC;
+		saida	  : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+	);
+end Keyboard;
+
+architecture Behavioral of Keyboard is
+	type stateFSM is (
+		Idle, -- Aguardando
+		Reading, -- Recebendo
+		Done -- Acabou
+	);
+	
+	signal estado: stateFSM := Idle;
+	signal Tecla : STD_LOGIC_VECTOR(7 DOWNTO 0 ) := (others => '0');
+	signal bordaAtual     : STD_LOGIC := '1';
+	signal bordaAnterior  : STD_LOGIC := '1';
+	signal conta  : INTEGER range 0 to 10 := 0;
+	
+	subtype contador is natural range 0 to 10;
+	
+begin
+
+	process(ps2_CLK)
+	begin		
+		if falling_edge(ps2_CLK) then
+			conta <= conta + 1;
+			if (conta = 0) then
+				if (ps2_DATA /= '0') then
+					conta <= 0;
+				end if;
+			elsif (conta > 0 and conta < 9) then
+				Tecla <= PS2_DATA & TECLA(7 downto 1);
+			elsif (conta = 9) then
+				NULL; --paridade
+			else -- contador = 10 = stop
+				conta <= 0;
+				saida <= Tecla;
+			end if;
+      end if;
+	end process;
+
+	
+	
+--	process(clk)
+--	begin		
+--		if rising_edge(clk) then
+--			bordaAnterior <= bordaAtual;
+--			bordaAtual <= ps2_CLK;
+--			
+--			case estado is 
+--				when Idle =>
+--				
+--					if (bordaAnterior = '1' and bordaAtual = '0') then
+--						estado <= Reading;
+--						conta <= 0;
+--					end if;
+--					
+--				when Reading =>
+--					if (bordaAnterior = '1' and bordaAtual = '0') then
+--					
+--						if conta <= 8 and conta >= 1 then
+--							Tecla(conta - 1) <= ps2_DATA;
+--							
+--						elsif conta <= 10 then
+--							estado <= Done;
+--						end if;
+--						
+--						conta <= conta + 1;
+--					end if;
+--					
+--				when Done =>
+--				
+--					saida <= Tecla;
+--					estado <= Idle;
+--				end case;
+--			end if;
+--		end process;
+		
+end Behavioral;
+			
+	

@@ -1,0 +1,18 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+ENTITY OSCILADOR IS
+    PORT (
+        clk : IN  STD_LOGIC;         -- clock de 50 MHz
+        audio_out : OUT STD_LOGIC          -- saída de audio
+    );
+END OSCILADOR;
+
+ARCHITECTURE Behavioral of OSCILADOR is
+
+    CONSTANT CLK_FREQ : integer := 50000000;
+	 
+	 
+
+END Behavioral;

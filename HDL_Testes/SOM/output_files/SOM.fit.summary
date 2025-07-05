@@ -1,0 +1,20 @@
+Fitter Status : Successful - Sat Jul  5 11:22:16 2025
+Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Revision Name : SOM
+Top-level Entity Name : OSCILADOR
+Family : Cyclone IV GX
+Device : EP4CGX150DF27I7
+Timing Models : Final
+Total logic elements : 621 / 149,760 ( < 1 % )
+    Total combinational functions : 621 / 149,760 ( < 1 % )
+    Dedicated logic registers : 95 / 149,760 ( < 1 % )
+Total registers : 95
+Total pins : 3 / 426 ( < 1 % )
+Total virtual pins : 0
+Total memory bits : 0 / 6,635,520 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 720 ( 0 % )
+Total GXB Receiver Channel PCS : 0 / 8 ( 0 % )
+Total GXB Receiver Channel PMA : 0 / 8 ( 0 % )
+Total GXB Transmitter Channel PCS : 0 / 8 ( 0 % )
+Total GXB Transmitter Channel PMA : 0 / 8 ( 0 % )
+Total PLLs : 0 / 8 ( 0 % )

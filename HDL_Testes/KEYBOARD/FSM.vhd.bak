@@ -1,0 +1,43 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+use IEEE.MATH_REAL.ALL;
+
+ENTITY FSM IS
+	PORT (
+		pixel_clock : IN STD_LOGIC;
+		teclado : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		state_a : OUT STD_LOGIC;
+		state_x : OUT STD_LOGIC;
+		state_p : OUT STD_LOGIC;
+		state_3 : OUT STD_LOGIC
+	);
+ENTITY FSM
+
+ARCHITECTURE behavioral OF FSM IS
+
+	TYPE state IS (solta, press);
+	SIGNAL reg_a, reg_x, reg_p. reg_3 : STD_LOGIC := '0';
+	
+BEGIN
+	PROCESS (pixel_clock)
+	BEGIN
+		IF rising_edge(pixel_clock) THEN
+			CASE STATE IS
+				WHEN solta =>
+					IF tecla = x"1C" THEN
+						reg_a <= '0';
+					ELSIF tecla = x"22" THEN
+					ELSIF tecla = x"4D" THEN
+					ELSIF tecla = x"26" THEN
+					END IF;
+			END CASE;
+		END IF;
+	END PROCESS;
+	
+	state_a <= reg_a;
+	state_x <= reg_x;
+	state_p <= reg_p;
+	state_3 <= reg_3;
+
+END behavioral;

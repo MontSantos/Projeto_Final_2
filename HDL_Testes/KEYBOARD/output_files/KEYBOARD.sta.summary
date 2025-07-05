@@ -1,0 +1,89 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 100C Model Setup 'u_pllvga|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -3.845
+TNS   : -33.727
+
+Type  : Slow 1200mV 100C Model Setup 'sync:u_sync|sync[1]'
+Slack : -1.277
+TNS   : -19.496
+
+Type  : Slow 1200mV 100C Model Hold 'u_pllvga|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.396
+TNS   : 0.000
+
+Type  : Slow 1200mV 100C Model Hold 'sync:u_sync|sync[1]'
+Slack : 0.398
+TNS   : 0.000
+
+Type  : Slow 1200mV 100C Model Minimum Pulse Width 'sync:u_sync|sync[1]'
+Slack : -1.500
+TNS   : -31.500
+
+Type  : Slow 1200mV 100C Model Minimum Pulse Width 'u_pllvga|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 7.320
+TNS   : 0.000
+
+Type  : Slow 1200mV 100C Model Minimum Pulse Width 'clock'
+Slack : 9.892
+TNS   : 0.000
+
+Type  : Slow 1200mV -40C Model Setup 'u_pllvga|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -3.065
+TNS   : -26.726
+
+Type  : Slow 1200mV -40C Model Setup 'sync:u_sync|sync[1]'
+Slack : -0.983
+TNS   : -14.350
+
+Type  : Slow 1200mV -40C Model Hold 'u_pllvga|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.327
+TNS   : 0.000
+
+Type  : Slow 1200mV -40C Model Hold 'sync:u_sync|sync[1]'
+Slack : 0.329
+TNS   : 0.000
+
+Type  : Slow 1200mV -40C Model Minimum Pulse Width 'sync:u_sync|sync[1]'
+Slack : -1.500
+TNS   : -31.500
+
+Type  : Slow 1200mV -40C Model Minimum Pulse Width 'u_pllvga|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 7.313
+TNS   : 0.000
+
+Type  : Slow 1200mV -40C Model Minimum Pulse Width 'clock'
+Slack : 9.910
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Setup 'u_pllvga|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -2.003
+TNS   : -17.700
+
+Type  : Fast 1200mV -40C Model Setup 'sync:u_sync|sync[1]'
+Slack : -0.074
+TNS   : -0.592
+
+Type  : Fast 1200mV -40C Model Hold 'sync:u_sync|sync[1]'
+Slack : 0.168
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Hold 'u_pllvga|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.168
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Minimum Pulse Width 'sync:u_sync|sync[1]'
+Slack : -1.000
+TNS   : -21.000
+
+Type  : Fast 1200mV -40C Model Minimum Pulse Width 'u_pllvga|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 7.434
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Minimum Pulse Width 'clock'
+Slack : 9.627
+TNS   : 0.000
+
+------------------------------------------------------------

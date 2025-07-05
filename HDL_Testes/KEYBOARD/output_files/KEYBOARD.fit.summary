@@ -1,0 +1,20 @@
+Fitter Status : Successful - Sat Jul  5 11:14:44 2025
+Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Revision Name : KEYBOARD
+Top-level Entity Name : MAIN
+Family : Cyclone IV GX
+Device : EP4CGX150DF27I7
+Timing Models : Final
+Total logic elements : 99 / 149,760 ( < 1 % )
+    Total combinational functions : 71 / 149,760 ( < 1 % )
+    Dedicated logic registers : 70 / 149,760 ( < 1 % )
+Total registers : 70
+Total pins : 13 / 426 ( 3 % )
+Total virtual pins : 0
+Total memory bits : 0 / 6,635,520 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 720 ( 0 % )
+Total GXB Receiver Channel PCS : 0 / 8 ( 0 % )
+Total GXB Receiver Channel PMA : 0 / 8 ( 0 % )
+Total GXB Transmitter Channel PCS : 0 / 8 ( 0 % )
+Total GXB Transmitter Channel PMA : 0 / 8 ( 0 % )
+Total PLLs : 1 / 8 ( 13 % )

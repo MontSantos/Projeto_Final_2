@@ -1,0 +1,18 @@
+Analysis & Synthesis Status : Successful - Sat Jul  5 11:21:48 2025
+Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Revision Name : SOM
+Top-level Entity Name : OSCILADOR
+Family : Cyclone IV GX
+Total logic elements : 621
+    Total combinational functions : 621
+    Dedicated logic registers : 95
+Total registers : 95
+Total pins : 3
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total GXB Receiver Channel PCS : 0
+Total GXB Receiver Channel PMA : 0
+Total GXB Transmitter Channel PCS : 0
+Total GXB Transmitter Channel PMA : 0
+Total PLLs : 0
