@@ -12,8 +12,8 @@ ENTITY IMAGE_CTRL IS
 		pixel_y : IN NATURAL RANGE 0 TO 767; --coordenada Y
 		w_col_addr : IN NATURAL RANGE 0 TO n_blocks - 1;
 		w_lin_addr : IN NATURAL RANGE 0 TO n_lin - 1;
-		out_data : IN NATURAL RANGE 0 TO 9;
-		tmp_data : IN NATURAL RANGE 0 TO 9;
+		out_data : IN NATURAL RANGE 0 TO 15;
+		tmp_data : IN NATURAL RANGE 0 TO 15;
 		r_col_addr : OUT NATURAL RANGE 0 TO n_blocks - 1;
 		r_lin_addr : OUT NATURAL RANGE 0 TO n_lin - 1;
 		red : OUT STD_LOGIC_VECTOR(2 DOWNTO 0); -- 3 bits
@@ -34,7 +34,7 @@ ARCHITECTURE Behavioral OF IMAGE_CTRL IS
 
 BEGIN
 	PROCESS (pixel_clock)
-	VARIABLE cor : NATURAL RANGE 0 TO 9;
+	VARIABLE cor : NATURAL RANGE 0 TO 15;
 	BEGIN
 		IF rising_edge(pixel_clock) THEN
 			IF ((pixel_x < border OR pixel_x >=  127 * border) OR (pixel_y < border OR pixel_y >= 95 * border)) THEN
@@ -77,43 +77,67 @@ BEGIN
 						
 					CASE cor IS
 						WHEN 0 =>
-							red_reg <= "111"; -- branco
+							red_reg <= "111"; -- Branco
 							green_reg <= "111";
 							blue_reg <= "11";
 						WHEN 1 =>
-							red_reg <= "111"; -- vermelho
-							green_reg <= "000";
-							blue_reg <= "00";
+							red_reg <= "010"; -- Cinza Escuro
+							green_reg <= "010";
+							blue_reg <= "01";
 						WHEN 2 =>
-							red_reg <= "000"; -- verde
-							green_reg <= "111";
+							red_reg <= "100"; -- Marrom escuro
+							green_reg <= "000";
 							blue_reg <= "00";
 						WHEN 3 =>
-							red_reg <= "000"; -- azul
+							red_reg <= "111"; -- Vermelho
 							green_reg <= "000";
-							blue_reg <= "11";
+							blue_reg <= "00";
 						WHEN 4 =>
-							red_reg <= "111"; -- amarelo
-							green_reg <= "111";
+							red_reg <= "111"; -- Laranja
+							green_reg <= "010";
 							blue_reg <= "00";
 						WHEN 5 =>
-							red_reg <= "111"; -- rosa
-							green_reg <= "000";
-							blue_reg <= "11";
-						WHEN 6 =>
-							red_reg <= "000"; -- azul-claro
+							red_reg <= "111"; -- Amarelo
 							green_reg <= "111";
-							blue_reg <= "11";
+							blue_reg <= "00";
+						WHEN 6 =>
+							red_reg <= "111"; -- Amarelo - escuro
+							green_reg <= "011";
+							blue_reg <= "10";
 						WHEN 7 =>
-							red_reg <= "110"; -- marrom
+							red_reg <= "000"; -- verde escuro
 							green_reg <= "010";
 							blue_reg <= "00";
 						WHEN 8 =>
+							red_reg <= "000"; -- verde claro
+							green_reg <= "011";
+							blue_reg <= "00";
+						WHEN 9 =>
+							red_reg <= "000"; -- azul
+							green_reg <= "000";
+							blue_reg <= "11";
+						WHEN 10 =>
+							red_reg <= "000"; -- azul claro
+							green_reg <= "011";
+							blue_reg <= "11";
+						WHEN 11 =>
+							red_reg <= "010"; -- roxo
+							green_reg <= "000";
+							blue_reg <= "01";
+						WHEN 12 =>
+							red_reg <= "111"; -- rosa choque
+							green_reg <= "000";
+							blue_reg <= "11";
+						WHEN 13 =>
 							red_reg <= "111"; -- rosa claro
 							green_reg <= "011";
+							blue_reg <= "11";
+						WHEN 14 =>
+							red_reg <= "110"; -- cinza
+							green_reg <= "110";
 							blue_reg <= "01";
-						WHEN 9 =>
-							red_reg <= "000"; -- preto
+						WHEN 15 =>
+							red_reg <= "000"; -- Preto
 							green_reg <= "000";
 							blue_reg <= "00";
 						WHEN OTHERS =>

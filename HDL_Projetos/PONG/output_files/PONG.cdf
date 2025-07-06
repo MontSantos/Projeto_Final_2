@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CGX150DF27) Path("C:/Users/guilh/Documents/TCC/PONG/output_files/") File("PONG.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CGX150DF27) Path("C:/Users/guilh/Documents/TCC/BREAKOUT/output_files/") File("Breakout.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

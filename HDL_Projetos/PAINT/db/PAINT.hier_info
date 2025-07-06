@@ -3,16 +3,16 @@ clock => pll_vga:u_pllvga.inclk0
 ps2_CLK => sync:u_sync.ps2_CLK
 ps2_CLK => tec_ff:u_tecff.ps2_CLK
 ps2_DATA => teclado:u_teclado.ps2_DATA
-h_sync <= timing_ctrl:u_timingctrl.h_sync
-v_sync <= timing_ctrl:u_timingctrl.v_sync
-red[0] <= red.DB_MAX_OUTPUT_PORT_TYPE
-red[1] <= red.DB_MAX_OUTPUT_PORT_TYPE
-red[2] <= red.DB_MAX_OUTPUT_PORT_TYPE
-green[0] <= green.DB_MAX_OUTPUT_PORT_TYPE
-green[1] <= green.DB_MAX_OUTPUT_PORT_TYPE
-green[2] <= green.DB_MAX_OUTPUT_PORT_TYPE
-blue[0] <= blue.DB_MAX_OUTPUT_PORT_TYPE
-blue[1] <= blue.DB_MAX_OUTPUT_PORT_TYPE
+h_sync << timing_ctrl:u_timingctrl.h_sync
+v_sync << timing_ctrl:u_timingctrl.v_sync
+red[0] << red.DB_MAX_OUTPUT_PORT_TYPE
+red[1] << red.DB_MAX_OUTPUT_PORT_TYPE
+red[2] << red.DB_MAX_OUTPUT_PORT_TYPE
+green[0] << green.DB_MAX_OUTPUT_PORT_TYPE
+green[1] << green.DB_MAX_OUTPUT_PORT_TYPE
+green[2] << green.DB_MAX_OUTPUT_PORT_TYPE
+blue[0] << blue.DB_MAX_OUTPUT_PORT_TYPE
+blue[1] << blue.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |main|PLL_VGA:u_pllvga

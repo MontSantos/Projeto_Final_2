@@ -1,12 +1,12 @@
-Fitter Status : Successful - Sat Jul  5 11:46:45 2025
+Fitter Status : Successful - Sun Jul  6 14:40:12 2025
 Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 Revision Name : PAINT
 Top-level Entity Name : MAIN
 Family : Cyclone IV GX
 Device : EP4CGX150DF27I7
 Timing Models : Final
-Total logic elements : 23,244 / 149,760 ( 16 % )
-    Total combinational functions : 23,096 / 149,760 ( 15 % )
+Total logic elements : 23,311 / 149,760 ( 16 % )
+    Total combinational functions : 23,151 / 149,760 ( 15 % )
     Dedicated logic registers : 12,006 / 149,760 ( 8 % )
 Total registers : 12006
 Total pins : 13 / 426 ( 3 % )

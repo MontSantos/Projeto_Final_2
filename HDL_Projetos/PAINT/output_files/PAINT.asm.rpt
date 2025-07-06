@@ -1,5 +1,5 @@
 Assembler report for PAINT
-Sat Jul  5 11:47:00 2025
+Sun Jul  6 14:40:29 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -38,7 +38,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sat Jul  5 11:47:00 2025 ;
+; Assembler Status      ; Successful - Sun Jul  6 14:40:29 2025 ;
 ; Revision Name         ; PAINT                                 ;
 ; Top-level Entity Name ; MAIN                                  ;
 ; Family                ; Cyclone IV GX                         ;
@@ -67,8 +67,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------+--------------------------------------------------------------------+
 ; Option         ; Setting                                                            ;
 +----------------+--------------------------------------------------------------------+
-; JTAG usercode  ; 0x014168A7                                                         ;
-; Checksum       ; 0x014168A7                                                         ;
+; JTAG usercode  ; 0x0141A838                                                         ;
+; Checksum       ; 0x0141A838                                                         ;
 +----------------+--------------------------------------------------------------------+
 
 
@@ -78,15 +78,15 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Sat Jul  5 11:46:51 2025
+    Info: Processing started: Sun Jul  6 14:40:19 2025
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off PAINT -c PAINT
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 5218 megabytes
-    Info: Processing ended: Sat Jul  5 11:47:01 2025
+    Info: Processing ended: Sun Jul  6 14:40:29 2025
     Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:09
+    Info: Total CPU time (on all processors): 00:00:10
 
 

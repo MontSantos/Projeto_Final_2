@@ -9,7 +9,7 @@ ENTITY TEC_FF IS
 		ps2_CLK : IN STD_LOGIC;
 		new_tec : IN STD_LOGIC;
 		teclado : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-		state_cor : OUT NATURAL RANGE 0 TO 9;
+		state_cor : OUT NATURAL RANGE 0 TO 15;
 		state_enter : OUT STD_LOGIC;
 		state_space : OUT STD_LOGIC;
 		state_w : OUT STD_LOGIC;
@@ -24,7 +24,7 @@ ARCHITECTURE behavioral OF TEC_FF IS
 	SIGNAL reg_read, reg_new, tic_reg : STD_LOGIC := '0';
 	SIGNAL tec_r0, tec_r1 : STD_LOGIC_VECTOR(7 DOWNTO 0) := (OTHERS => '0');
 	SIGNAL reg_w, reg_s, reg_a, reg_d, reg_enter, reg_space : STD_LOGIC := '0';
-	SIGNAL reg_cor : NATURAL RANGE 0 TO 9 := 0;
+	SIGNAL reg_cor : NATURAL RANGE 0 TO 15 := 0;
 	
 BEGIN
 	PROCESS (pixel_clock)
@@ -49,6 +49,7 @@ BEGIN
 					WHEN x"1C" => reg_a <= '0';
 					WHEN x"23" => reg_d <= '0';
 					WHEN x"29" => reg_space <= '0';
+					WHEN x"45" => reg_cor <= 0; --0
 					WHEN x"16" => reg_cor <= 1; --1
 					WHEN x"1E" => reg_cor <= 2; --2
 					WHEN x"26" => reg_cor <= 3; --3
@@ -58,7 +59,12 @@ BEGIN
 					WHEN x"3D" => reg_cor <= 7; --7
 					WHEN x"3E" => reg_cor <= 8; --8
 					WHEN x"46" => reg_cor <= 9; --9
-					WHEN x"45" => reg_cor <= 0; --0
+					WHEN x"2c" => reg_cor <= 10; --T
+					WHEN x"35" => reg_cor <= 11; --Y
+					WHEN x"3c" => reg_cor <= 12; --U
+					WHEN x"43" => reg_cor <= 13; --I
+					WHEN x"44" => reg_cor <= 14; --O
+					WHEN x"4D" => reg_cor <= 15; --P
 					WHEN x"5A" => reg_enter <= '0';
 					WHEN OTHERS => NULL;
 				END CASE;

@@ -12,9 +12,9 @@ ENTITY GRID IS
 		  w_lin_addr : IN NATURAL RANGE 0 TO n_lin - 1;
 		  r_col_addr : IN NATURAL RANGE 0 TO n_blocks - 1;
 		  r_lin_addr : IN NATURAL RANGE 0 TO n_lin - 1;
-		  color_data : IN NATURAL RANGE 0 TO 9;
+		  color_data : IN NATURAL RANGE 0 TO 15;
 		  rw_en : IN STD_LOGIC;
-        out_data : OUT NATURAL RANGE 0 TO 9
+        out_data : OUT NATURAL RANGE 0 TO 15
     );
 END GRID;
 

@@ -27,8 +27,8 @@ ARCHITECTURE Behavioral OF COLOR_CTRL IS
 	SIGNAL lin_reg : NATURAL RANGE 0 TO n_lin - 1:= 0;
 	SIGNAL rw_reg : STD_LOGIC := '0';
 	
-	SIGNAL data_reg : NATURAL RANGE 0 TO 9 := 0;
-	SIGNAL data_tmp : NATURAL RANGE 0 TO 9 := 0;
+	SIGNAL data_reg : NATURAL RANGE 0 TO 15 := 0;
+	SIGNAL data_tmp : NATURAL RANGE 0 TO 15 := 0;
 
 BEGIN
 	PROCESS (pixel_clock)

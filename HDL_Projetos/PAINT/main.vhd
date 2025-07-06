@@ -31,9 +31,9 @@ ARCHITECTURE Behavioral OF MAIN IS
 	 
 	 SIGNAL go_signal: STD_LOGIC;
 	 
-	 SIGNAL out_data : NATURAL RANGE 0 TO 9 := 0; 
-	 SIGNAL color_data : NATURAL RANGE 0 TO 9 := 0;
-	 SIGNAL tmp_data : NATURAL RANGE 0 TO 9 := 0;
+	 SIGNAL out_data : NATURAL RANGE 0 TO 15 := 0; 
+	 SIGNAL color_data : NATURAL RANGE 0 TO 15 := 0;
+	 SIGNAL tmp_data : NATURAL RANGE 0 TO 15 := 0;
 	 SIGNAL w_col_addr : NATURAL RANGE 0 TO n_blocks - 1 := 0;
 	 SIGNAL w_lin_addr : NATURAL RANGE 0 TO n_LIN - 1 := 0;
 	 SIGNAL r_col_addr : NATURAL RANGE 0 TO n_blocks - 1 := 0;
@@ -47,7 +47,7 @@ ARCHITECTURE Behavioral OF MAIN IS
 	 SIGNAL hit : STD_LOGIC;
 	 
 	 SIGNAL reg_w, reg_s, reg_a, reg_d, reg_enter, reg_space : STD_LOGIC := '0';
-	 SIGNAL reg_cor : NATURAL RANGE 0 TO 9 := 0;
+	 SIGNAL reg_cor : NATURAL RANGE 0 TO 15 := 0;
 
 BEGIN
 

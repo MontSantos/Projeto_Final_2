@@ -11,5 +11,5 @@ PACKAGE PKG_PARAM IS
 	CONSTANT block_height : NATURAL := 16;
 	CONSTANT block_width : NATURAL := 16;
 	
-	TYPE grid_mat IS ARRAY(0 TO n_lin - 1, 0 TO n_blocks - 1) OF NATURAL RANGE 0 TO 9;
+	TYPE grid_mat IS ARRAY(0 TO n_lin - 1, 0 TO n_blocks - 1) OF NATURAL RANGE 0 TO 15;
 END PACKAGE PKG_PARAM;
