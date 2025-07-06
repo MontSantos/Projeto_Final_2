@@ -52,12 +52,15 @@ BEGIN
 						dir_y <= 1;
 						
 				ELSE
-					IF (ini = '0') THEN	
-						IF (by_reg >= v_pixels - border - b_size) THEN
+					IF (ini = '0') THEN
+						IF (game = '1') THEN
+							ini <= '1';
+							
+						ELSIF (by_reg >= v_pixels - border - b_size) THEN
 							life_reg <= life_reg - 1;
 							audio_reg <= 4;
 							
-							IF (life_reg > 1) AND (game = '0') THEN
+							IF (life_reg > 1) THEN
 								bx_reg <= h_pixels / 2 - b_size / 2;
 								by_reg <= (v_pixels / 2) - b_size / 2;
 								multiplier <= 2;
