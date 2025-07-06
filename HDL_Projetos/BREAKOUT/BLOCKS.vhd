@@ -34,8 +34,8 @@ BEGIN
 			IF go_signal = '1' THEN
 				IF (state_space = '1') THEN
 					parede_reg <= (OTHERS => (OTHERS => '1'));
-					score1_reg <= 9;
-					score2_reg <= 5;
+					score1_reg <= 0;
+					score2_reg <= 0;
 					hit_reg <= '0';
 					game_reg <= '0';
 				

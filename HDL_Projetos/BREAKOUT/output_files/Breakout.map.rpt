@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Breakout
-Sun Jul  6 10:53:15 2025
+Sun Jul  6 11:04:17 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -60,13 +60,13 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Jul  6 10:53:14 2025          ;
+; Analysis & Synthesis Status        ; Successful - Sun Jul  6 11:04:16 2025          ;
 ; Quartus Prime Version              ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                      ; Breakout                                       ;
 ; Top-level Entity Name              ; MAIN                                           ;
 ; Family                             ; Cyclone IV GX                                  ;
-; Total logic elements               ; 5,856                                          ;
-;     Total combinational functions  ; 5,787                                          ;
+; Total logic elements               ; 5,855                                          ;
+;     Total combinational functions  ; 5,786                                          ;
 ;     Dedicated logic registers      ; 438                                            ;
 ; Total registers                    ; 438                                            ;
 ; Total pins                         ; 15                                             ;
@@ -184,7 +184,7 @@ https://fpgasoftware.intel.com/eula.
 ;     Processor 3            ;   0.1%      ;
 ;     Processor 4            ;   0.1%      ;
 ;     Processor 5            ;   0.1%      ;
-;     Processor 6            ;   0.0%      ;
+;     Processor 6            ;   0.1%      ;
 ;     Processor 7            ;   0.0%      ;
 ;     Processor 8            ;   0.0%      ;
 ;     Processors 9-16        ;   0.0%      ;
@@ -272,7 +272,7 @@ https://fpgasoftware.intel.com/eula.
 ;                          ;                                                                                         ;
 ; Maximum fan-out node     ; PLL_VGA:u_pllvga|altpll:altpll_component|PLL_VGA_altpll:auto_generated|wire_pll1_clk[0] ;
 ; Maximum fan-out          ; 418                                                                                     ;
-; Total fan-out            ; 18302                                                                                   ;
+; Total fan-out            ; 18301                                                                                   ;
 ; Average fan-out          ; 2.93                                                                                    ;
 +--------------------------+-----------------------------------------------------------------------------------------+
 
@@ -282,7 +282,7 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                     ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                       ; Entity Name         ; Library Name ;
 +------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |MAIN                                          ; 5787 (8)            ; 438 (0)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 15   ; 0            ; |MAIN                                                                                                                     ; MAIN                ; work         ;
+; |MAIN                                          ; 5786 (8)            ; 438 (0)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 15   ; 0            ; |MAIN                                                                                                                     ; MAIN                ; work         ;
 ;    |AUDIO:u_audio|                             ; 1314 (113)          ; 69 (69)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAIN|AUDIO:u_audio                                                                                                       ; AUDIO               ; work         ;
 ;       |lpm_divide:Div0|                        ; 1201 (0)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAIN|AUDIO:u_audio|lpm_divide:Div0                                                                                       ; lpm_divide          ; work         ;
 ;          |lpm_divide_bom:auto_generated|       ; 1201 (0)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAIN|AUDIO:u_audio|lpm_divide:Div0|lpm_divide_bom:auto_generated                                                         ; lpm_divide_bom      ; work         ;
@@ -308,7 +308,7 @@ https://fpgasoftware.intel.com/eula.
 ;                   |add_sub_6jh:auto_generated| ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAIN|BALL:u_BALL|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_6jh:auto_generated       ; add_sub_6jh         ; work         ;
 ;             |mul_lfrg:$00030|                  ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAIN|BALL:u_BALL|lpm_mult:Mult2|multcore:mult_core|mul_lfrg:$00030                                                       ; mul_lfrg            ; work         ;
 ;             |mul_lfrg:mul_lfrg_first_mod|      ; 4 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAIN|BALL:u_BALL|lpm_mult:Mult2|multcore:mult_core|mul_lfrg:mul_lfrg_first_mod                                           ; mul_lfrg            ; work         ;
-;    |BLOCKS:u_blocks|                           ; 2249 (427)          ; 106 (106)                 ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAIN|BLOCKS:u_blocks                                                                                                     ; BLOCKS              ; work         ;
+;    |BLOCKS:u_blocks|                           ; 2248 (426)          ; 106 (106)                 ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAIN|BLOCKS:u_blocks                                                                                                     ; BLOCKS              ; work         ;
 ;       |lpm_divide:Div0|                        ; 678 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAIN|BLOCKS:u_blocks|lpm_divide:Div0                                                                                     ; lpm_divide          ; work         ;
 ;          |lpm_divide_l4p:auto_generated|       ; 678 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAIN|BLOCKS:u_blocks|lpm_divide:Div0|lpm_divide_l4p:auto_generated                                                       ; lpm_divide_l4p      ; work         ;
 ;             |abs_divider_mbg:divider|          ; 678 (33)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAIN|BLOCKS:u_blocks|lpm_divide:Div0|lpm_divide_l4p:auto_generated|abs_divider_mbg:divider                               ; abs_divider_mbg     ; work         ;
@@ -389,8 +389,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 438   ;
-; Number of registers using Synchronous Clear  ; 82    ;
-; Number of registers using Synchronous Load   ; 2     ;
+; Number of registers using Synchronous Clear  ; 83    ;
+; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 337   ;
@@ -514,7 +514,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |MAIN|BLOCKS:u_blocks|score1_reg[0]        ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |MAIN|BLOCKS:u_blocks|score2_reg[2]        ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |MAIN|BLOCKS:u_blocks|score2_reg[2]        ;
 ; 5:1                ; 24 bits   ; 72 LEs        ; 48 LEs               ; 24 LEs                 ; Yes        ; |MAIN|PADDLE_CTRL:u_paddlectrl|p1x_reg[27] ;
 ; 7:1                ; 24 bits   ; 96 LEs        ; 72 LEs               ; 24 LEs                 ; Yes        ; |MAIN|BALL:u_BALL|bx_reg[17]               ;
 ; 8:1                ; 25 bits   ; 125 LEs       ; 75 LEs               ; 50 LEs                 ; Yes        ; |MAIN|BALL:u_BALL|by_reg[18]               ;
@@ -1225,26 +1225,25 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; boundary_port         ; 15                          ;
 ; cycloneiii_ff         ; 438                         ;
-;     ENA               ; 266                         ;
-;     ENA SCLR          ; 71                          ;
+;     ENA               ; 265                         ;
+;     ENA SCLR          ; 72                          ;
 ;     SCLR              ; 11                          ;
-;     SLD               ; 2                           ;
-;     plain             ; 88                          ;
-; cycloneiii_lcell_comb ; 5788                        ;
+;     plain             ; 90                          ;
+; cycloneiii_lcell_comb ; 5787                        ;
 ;     arith             ; 2257                        ;
 ;         1 data inputs ; 17                          ;
 ;         2 data inputs ; 781                         ;
 ;         3 data inputs ; 1459                        ;
-;     normal            ; 3531                        ;
+;     normal            ; 3530                        ;
 ;         0 data inputs ; 145                         ;
 ;         1 data inputs ; 25                          ;
-;         2 data inputs ; 1072                        ;
-;         3 data inputs ; 307                         ;
-;         4 data inputs ; 1982                        ;
+;         2 data inputs ; 1070                        ;
+;         3 data inputs ; 305                         ;
+;         4 data inputs ; 1985                        ;
 ; cycloneiv_pll         ; 1                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 106.60                      ;
-; Average LUT depth     ; 65.16                       ;
+; Average LUT depth     ; 65.20                       ;
 +-----------------------+-----------------------------+
 
 
@@ -1253,7 +1252,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:22     ;
+; Top            ; 00:00:25     ;
 +----------------+--------------+
 
 
@@ -1263,7 +1262,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Sun Jul  6 10:52:42 2025
+    Info: Processing started: Sun Jul  6 11:03:39 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Breakout -c Breakout
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -1482,15 +1481,15 @@ Info (17016): Found the following redundant logic cells in design
     Info (17048): Logic cell "AUDIO:u_audio|lpm_divide:Div0|lpm_divide_bom:auto_generated|sign_div_unsign_9nh:divider|alt_u_div_0ef:divider|op_1~18"
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 5878 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 5877 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 12 output pins
-    Info (21061): Implemented 5862 logic cells
+    Info (21061): Implemented 5861 logic cells
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 5079 megabytes
-    Info: Processing ended: Sun Jul  6 10:53:15 2025
-    Info: Elapsed time: 00:00:33
-    Info: Total CPU time (on all processors): 00:00:49
+    Info: Peak virtual memory: 5106 megabytes
+    Info: Processing ended: Sun Jul  6 11:04:17 2025
+    Info: Elapsed time: 00:00:38
+    Info: Total CPU time (on all processors): 00:00:55
 
 

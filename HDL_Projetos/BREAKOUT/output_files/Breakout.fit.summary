@@ -1,12 +1,12 @@
-Fitter Status : Successful - Sun Jul  6 10:54:02 2025
+Fitter Status : Successful - Sun Jul  6 11:05:13 2025
 Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 Revision Name : Breakout
 Top-level Entity Name : MAIN
 Family : Cyclone IV GX
 Device : EP4CGX150DF27I7
 Timing Models : Final
-Total logic elements : 5,821 / 149,760 ( 4 % )
-    Total combinational functions : 5,787 / 149,760 ( 4 % )
+Total logic elements : 5,817 / 149,760 ( 4 % )
+    Total combinational functions : 5,786 / 149,760 ( 4 % )
     Dedicated logic registers : 438 / 149,760 ( < 1 % )
 Total registers : 438
 Total pins : 15 / 426 ( 4 % )
