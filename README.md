@@ -5,6 +5,8 @@
 **Por: Guilherme Santos**  
 Repositório de Projeto Final de Graduação em Engenharia de Computação.
 
+Nota Final: 10,0 / 10,0
+
 ---
 
 Este repositório disponibiliza todos os materiais utilizados e desenvolvidos ao longo do projeto, incluindo:
